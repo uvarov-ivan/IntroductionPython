@@ -18,11 +18,14 @@ print(bed_of_trees)
 max_num_of_berries_on_three_trees = 0
 
 i = -1
-while i < len(bed_of_trees)-1:
-    num_of_berries_on_three_trees = bed_of_trees[i-1] + bed_of_trees[i] + bed_of_trees[i+1]
+while i < len(bed_of_trees) - 1:
+    num_of_berries_on_three_trees = bed_of_trees[i - 1] + bed_of_trees[i] + bed_of_trees[i + 1]
     if max_num_of_berries_on_three_trees < num_of_berries_on_three_trees:
         max_num_of_berries_on_three_trees = num_of_berries_on_three_trees
-        if i < 0:max_tree = len(bed_of_trees)
-        else:max_tree = i + 1
+        if i < 0:
+            max_tree = len(bed_of_trees)
+        else:
+            max_tree = i + 1
     i += 1
-print(f'За один заход собирающий модуль может собрать максимум {max_num_of_berries_on_three_trees} ягод, находясь перед деревом № {max_tree}')
+print(
+    f'За один заход собирающий модуль может собрать максимум {max_num_of_berries_on_three_trees} ягод, находясь перед деревом № {max_tree}')
