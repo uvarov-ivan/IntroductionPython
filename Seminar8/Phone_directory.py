@@ -38,8 +38,10 @@ def add_contact(phone_directory: dict[int, tuple[str, str, str]]) -> None:
 
 
 def show_pd(phone_directory: dict[int, tuple[str, str, str]]) -> None:
+    print('=' * 100)
     for (k, v) in phone_directory.items():
-        print(f'{k}) ФИО: {v[0]}, Тел.: {v[1]}, Комментарий: {v[2]}')
+        print(f'{k:>3}) ФИО: {v[0]:<30}| Тел.: {v[1]:<15}| Комментарий: {v[2]}')
+    print('=' * 100)
 
 
 def contact_search(phone_directory: dict[int, tuple[str, str, str]]):
@@ -94,8 +96,9 @@ def changing_contact(phone_directory: dict[int, tuple[str, str, str]]) -> dict[i
         case 3:
             text = 'Введите новый комментарий -> '
     change_contact[what_change] = input(text)
-    phone_directory[num_contact]= (change_contact[1],change_contact[2],change_contact[3])
+    phone_directory[num_contact] = (change_contact[1], change_contact[2], change_contact[3])
     return phone_directory
+
 
 def delliting_contact(phone_directory: dict[int, tuple[str, str, str]]) -> dict[int, tuple[str, str, str]]:
     print('Для начала, найдём контакт который хотим удалить:')
@@ -105,21 +108,27 @@ def delliting_contact(phone_directory: dict[int, tuple[str, str, str]]) -> dict[
     print("Выбранный контакт удалён")
     return phone_directory
 
-if __name__ == '__main__':
-    my_dict = load_pd('phone_directory.txt')
-    action = input('Выберите действие:\nДобавить новый контакт - 1\nПоиск контакта - 2\n'
-                   'Показать весь справочник - 3\nИзменить контакт - 4\nУдалить контакт - 5\n-> ')
-    match action:
-        case '1':
-            add_contact(my_dict)
-        case '2':
-            contact_search(my_dict)
-        case '3':
-            show_pd(my_dict)
-        case '4':
-            my_dict = changing_contact(my_dict)
-        case '5':
-            my_dict = delliting_contact(my_dict)
 
-    # print(my_dict)
-    save_pd(my_dict)
+if __name__ == '__main__':
+    while True:
+        my_dict = load_pd('phone_directory.txt')
+        action = input('Выберите действие:\nДобавить новый контакт - 1\nПоиск контакта - 2\n'
+                       'Показать весь справочник - 3\nИзменить контакт - 4\nУдалить контакт - 5\nСохранить книгу - 6\n'
+                       'Выход - 7\n-> ')
+        match action:
+            case '1':
+                add_contact(my_dict)
+            case '2':
+                contact_search(my_dict)
+            case '3':
+                show_pd(my_dict)
+            case '4':
+                my_dict = changing_contact(my_dict)
+            case '5':
+                my_dict = delliting_contact(my_dict)
+            case '6':
+                save_pd(my_dict)
+            case '7':
+                break
+
+
