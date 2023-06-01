@@ -37,13 +37,13 @@ def start():
                         current_id = view.input_search(text.input_index)
                     else:
                         current_id = result[0].get('id')
-                    action = view.input_search(text.are_you_sure_change(model.action(current_id)))
+                    action = view.input_search(text.are_you_sure_change(model.compare(current_id)))
                     if action == 'y':
                         new_contact = view.input_contact(text.change_contact)
                         name = model.change_contact(new_contact, current_id)
                         view.print_message(text.change_seccessful(name))
                     elif action == 'n':
-                        view.print_message(text.cancel_change(model.action(current_id)))
+                        view.print_message(text.cancel_change(model.compare(current_id)))
                     else:
                         view.print_message(text.error_input)
                 else:
@@ -57,12 +57,12 @@ def start():
                         current_id = view.input_search(text.input_index)
                     else:
                         current_id = result[0].get('id')
-                    action = view.input_search(text.are_you_sure_del(model.action(current_id)))
+                    action = view.input_search(text.are_you_sure_del(model.compare(current_id)))
                     if action == 'y':
                         name = model.deleting_contact(current_id)
                         view.print_message(text.delete_seccessful(name))
                     elif action == 'n':
-                        view.print_message(text.cancel_deletion(model.action(current_id)))
+                        view.print_message(text.cancel_deletion(model.compare(current_id)))
                     else:
                         view.print_message(text.error_input)
                 else:

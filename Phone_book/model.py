@@ -65,7 +65,7 @@ def deleting_contact(index: str) -> str:
         if index == phone_book[ind[0]].get('id'):
             return phone_book.pop(ind[0]).get('name')
 
-def action(index: str) -> str:
+def compare(index: str) -> str:
     global phone_book
     for contact in phone_book:
         if index == contact.get('id'):
